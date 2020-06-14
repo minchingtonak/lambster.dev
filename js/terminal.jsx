@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Interpreter, Verbosity } from 'lambda';
-import { Writable } from 'stream';
+import React, { Component } from "react";
+import { Interpreter, Verbosity } from "lambda";
+import { Writable } from "stream";
 
 function Log(props) {
   return (
@@ -31,37 +31,42 @@ export class Terminal extends Component {
   }
 
   componentDidMount() {
-    this.inputfield = document.getElementById('terminal-input');
-    this.outputfield = document.getElementById('terminal-output');
+    this.inputfield = document.getElementById("terminal-input");
+    this.outputfield = document.getElementById("terminal-output");
+  }
+
+  componentDidUpdate(prev_props) {
+    if (this.props.verbosity !== prev_props.verbosity)
+      this.interpreter.setOptions({ verbosity: this.props.verbosity });
   }
 
   write(text) {
-    this.setState((prev) => ({
+    this.setState(prev => ({
       logs: [...prev.logs, text],
     }));
   }
 
   addHistoryItem(cmd) {
-    this.setState((prev) => ({
+    this.setState(prev => ({
       history: [cmd, ...prev.history],
     }));
   }
 
   handleKeyPress(e) {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       const query = this.inputfield.value;
-      this.inputfield.value = '';
+      this.inputfield.value = "";
       this.addHistoryItem(query);
       this.write(`${this.props.prompt}${query}`);
       this.interpreter.interpret(query);
-    } else if (e.key === 'ArrowUp') {
+    } else if (e.key === "ArrowUp") {
       // this.setState((prev) => ({
       //   cur_history:
       //     prev.cur_history === prev.history.length - 1
       //       ? prev.cur_history
       //       : prev.cur_history + 1,
       // }));
-    } else if (e.key === 'ArrowDown') {
+    } else if (e.key === "ArrowDown") {
       // this.setState((prev) => ({
       //   cur_history:
       //     prev.cur_history === -1 ? prev.cur_history : prev.cur_history - 1,
@@ -71,6 +76,7 @@ export class Terminal extends Component {
 
   render() {
     const { logs } = this.state;
+    const { hidden } = this.props;
     return (
       <div
         className="border overflow-auto p-2"
@@ -79,11 +85,12 @@ export class Terminal extends Component {
           this.inputfield.focus();
         }}
         style={{
-          height: '400px',
-          fontSize: '0.8em',
+          height: "400px",
+          fontSize: "0.8em",
+          display: hidden ? "none" : "inherit",
         }}
       >
-        <div className="container-fluid p-0" id="terminal-output" >
+        <div className="container-fluid p-0" id="terminal-output">
           {logs.map((text, idx) => (
             <Log key={idx} text={text} />
           ))}

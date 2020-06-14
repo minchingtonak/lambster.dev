@@ -1,75 +1,93 @@
 import React, { Component } from "react";
 import { Terminal } from "./terminal";
 import { Editor } from "./editor";
+import { Verbosity } from "lambda";
 
 export class SwitchPanel extends Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      display_terminal: true,
+      verbosity: Verbosity.LOW,
+    };
+  }
 
-    componentDidMount() {
-        this.terminal = document.getElementById("terminal-container");
-        this.editor = document.getElementById("editor-container");
-    }
+  displayTerminal() {
+    this.setState({ display_terminal: true });
+  }
 
-    displayTerminal() {
-        this.terminal.style.display = "inherit";
-        this.editor.style.display = "none";
-    }
+  displayEditor() {
+    this.setState({ display_terminal: false });
+  }
 
-    displayEditor() {
-        this.terminal.style.display = "none";
-        this.editor.style.display = "inherit";
-    }
+  setVerbosity(verbosity) {
+    this.setState({ verbosity: verbosity });
+  }
 
-    render() {
-        return (
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-xs-2">
-                        <button
-                            className="rounded-top border border-bottom-0 pl-3 pr-3 py-1"
-                            onClick={this.displayTerminal.bind(this)}
-                        >
-                            Terminal
-                        </button>
-                    </div>
-                    <div className="col-xs-2">
-                        <button
-                            className="rounded-top border border-bottom-0 pl-3 pr-3 py-1"
-                            onClick={this.displayEditor.bind(this)}
-                        >
-                            Editor
-                        </button>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-0">
-                        <Terminal prompt="λ> " />
-                    </div>
-                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-0">
-                        <Editor />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-xs-2">
-                        <div className="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label className="btn btn-secondary active">
-                                <input type="radio" name="options" id="option1" checked/>
-                                    Active
-                            </label>
-                            <label className="btn btn-secondary">
-                                <input type="radio" name="options" id="option2"/>
-                                    Radio
-                            </label>
-                            <label className="btn btn-secondary">
-                                <input type="radio" name="options" id="option3"/>
-                                    Radio
-                            </label>
-                        </div>
-                    </div>
-                </div>
+  render() {
+    const { display_terminal, verbosity } = this.state;
+    return (
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-xs-2">
+            <button
+              className="rounded-top border border-bottom-0 pl-3 pr-3 py-2"
+              onClick={this.displayTerminal.bind(this)}
+            >
+              Terminal
+            </button>
+          </div>
+          <div className="col-xs-2">
+            <button
+              className="rounded-top border border-bottom-0 pl-3 pr-3 py-2"
+              onClick={this.displayEditor.bind(this)}
+            >
+              Editor
+            </button>
+          </div>
+          <div className="col-xs-2 offset-lg-1">
+            <span className="mr-2">Verbosity</span>
+            <div className="btn-group btn-group-toggle" data-toggle="buttons">
+              <label className="btn btn-light border active">
+                <input
+                  type="radio"
+                  name="options"
+                  id="none"
+                  defaultChecked
+                  onClick={this.setVerbosity.bind(this, Verbosity.NONE)}
+                />
+                None
+              </label>
+              <label className="btn btn-light border">
+                <input
+                  type="radio"
+                  name="options"
+                  id="low"
+                  onClick={this.setVerbosity.bind(this, Verbosity.LOW)}
+                />
+                Reductions
+              </label>
+              <label className="btn btn-light border">
+                <input
+                  type="radio"
+                  name="options"
+                  id="high"
+                  onClick={this.setVerbosity.bind(this, Verbosity.HIGH)}
+                />
+                Reductions with explanation
+              </label>
             </div>
-        );
-    }
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-0">
+            <Terminal prompt="λ> " verbosity={verbosity} hidden={!display_terminal} />
+          </div>
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-0">
+            <Editor verbosity={verbosity} hidden={display_terminal} />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
