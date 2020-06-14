@@ -73,7 +73,7 @@ export class Terminal extends Component {
     const { logs } = this.state;
     return (
       <div
-        className="border rounded-lg overflow-auto p-2"
+        className="border overflow-auto p-2"
         id="terminal-container"
         onClick={() => {
           this.inputfield.focus();
