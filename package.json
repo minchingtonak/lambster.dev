@@ -3,7 +3,11 @@
     "version": "1.0.0",
     "description": "Lambda calculus interpreter web interface",
     "main": "webpack.config.js",
-    "scripts": {},
+    "scripts": {
+        "deploy": "./bin/minify",
+        "build": "npx webpack --config webpack.config.js",
+        "watch": "npx webpack --mode=development --watch --config webpack.config.js"
+    },
     "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com/minchingtonak/lambster.git"
