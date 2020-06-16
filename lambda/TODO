@@ -1,0 +1,4 @@
+optimization: parse expression with context-awareness so that the parser can link parent nodes automatically (or at least parent abstractions)
+figure out where i should be using readonly
+
+consider passing source to reportError function instead of keeping as instance -> will save computation in the case that there aren't any errors
