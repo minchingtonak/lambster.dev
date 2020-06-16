@@ -35,6 +35,7 @@ export class Editor extends Component {
                     done();
                   },
                 }),
+                rename_free_vars: editor.props.rename_free_vars,
               }).interpret(this.state.text);
             }}
           >
@@ -44,7 +45,7 @@ export class Editor extends Component {
                 fontSize: "0.8em",
               }}
               defaultValue={this.state.text}
-              className="border w-100 h-100 text-monospace font-weight-bold p-2"
+              className="border rounded-bottom w-100 h-100 text-monospace font-weight-bold p-2"
               spellCheck={false}
               rows={10}
               name="editor"

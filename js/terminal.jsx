@@ -20,7 +20,7 @@ export class Terminal extends Component {
     };
     const term = this;
     this.interpreter = new Interpreter({
-      verbosity: Verbosity.LOW,
+      verbosity: Verbosity.NONE,
       output_stream: new Writable({
         write: (chunk, enc, done) => {
           term.write(chunk.toString());
@@ -38,6 +38,8 @@ export class Terminal extends Component {
   componentDidUpdate(prev_props) {
     if (this.props.verbosity !== prev_props.verbosity)
       this.interpreter.setOptions({ verbosity: this.props.verbosity });
+    if (this.props.rename_free_vars !== prev_props.rename_free_vars)
+      this.interpreter.setOptions({ rename_free_vars: this.props.rename_free_vars });
   }
 
   write(text) {
@@ -79,7 +81,7 @@ export class Terminal extends Component {
     const { hidden } = this.props;
     return (
       <div
-        className="border overflow-auto p-2"
+        className="border rounded-bottom overflow-auto p-2"
         id="terminal-container"
         onClick={() => {
           this.inputfield.focus();
