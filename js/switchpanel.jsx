@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Terminal } from "./terminal";
 import { Editor } from "./editor";
-import { Verbosity } from "lambda";
+import { Verbosity } from "lambster";
 
 function ToggleButton(props) {
   return (

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Interpreter, Verbosity } from "lambda";
+import { Interpreter, Verbosity } from "lambster";
 import { Writable } from "stream";
 
 function Log(props) {
