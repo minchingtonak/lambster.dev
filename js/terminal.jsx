@@ -17,10 +17,12 @@ export class Terminal extends Component {
       history: [],
       logs: [],
       cur_history: -1,
+      scrollpos: 0,
+      clicktime: -1,
     };
     const term = this;
     this.interpreter = new Interpreter({
-      verbosity: Verbosity.NONE,
+      verbosity: term.props.verbosity,
       output_stream: new Writable({
         write: (chunk, enc, done) => {
           term.write(chunk.toString());
@@ -33,6 +35,7 @@ export class Terminal extends Component {
   componentDidMount() {
     this.inputfield = document.getElementById("terminal-input");
     this.outputfield = document.getElementById("terminal-output");
+    this.scrollbox = document.getElementById("terminal-container");
   }
 
   componentDidUpdate(prev_props) {
@@ -52,6 +55,30 @@ export class Terminal extends Component {
     this.setState(prev => ({
       history: [cmd, ...prev.history],
     }));
+  }
+
+  handleMouseDown() {
+    this.setState({
+      clicktime: new Date().getTime(),
+    });
+  }
+
+  handleMouseUp() {
+    if (new Date().getTime() - this.state.clicktime < 200) {
+      const pos = this.scrollbox.scrollTop;
+      this.inputfield.focus();
+      if (!this.isScrolledToBottom()) this.scrollbox.scrollTop = pos;
+    }
+  }
+
+  handleScroll(e) {
+    this.setState({
+      scrollpos: e.target.scrollTop + 2 + parseInt(this.scrollbox.style.height.slice(0, -2)),
+    });
+  }
+
+  isScrolledToBottom() {
+    return this.scrollbox.scrollHeight - this.state.scrollpos < 5;
   }
 
   handleKeyPress(e) {
@@ -83,9 +110,9 @@ export class Terminal extends Component {
       <div
         className="border rounded-bottom overflow-auto p-2"
         id="terminal-container"
-        onClick={() => {
-          this.inputfield.focus();
-        }}
+        onMouseDown={this.handleMouseDown.bind(this)}
+        onMouseUp={this.handleMouseUp.bind(this)}
+        onScroll={this.handleScroll.bind(this)}
         style={{
           height: "400px",
           fontSize: "0.8em",
@@ -101,8 +128,8 @@ export class Terminal extends Component {
         <input
           className="border-0"
           style={{
-            width: '93%',
-            outline: 'none'
+            width: "93%",
+            outline: "none",
           }}
           id="terminal-input"
           autoFocus
