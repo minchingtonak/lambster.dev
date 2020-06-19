@@ -100,6 +100,10 @@ export class Terminal extends Component {
         <span>{this.props.prompt}</span>
         <input
           className="border-0"
+          style={{
+            width: '93%',
+            outline: 'none'
+          }}
           id="terminal-input"
           autoFocus
           onKeyDown={this.handleKeyPress.bind(this)}

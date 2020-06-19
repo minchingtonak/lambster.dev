@@ -67,6 +67,7 @@ export class SwitchPanel extends Component {
                 className={`rounded-top border border-bottom-0 pl-3 pr-3 py-2 ${
                   display_terminal ? "shaded" : ""
                 }`}
+                style={{ outline: "none" }}
                 onClick={this.displayTerminal.bind(this)}
               >
                 Terminal
@@ -75,6 +76,7 @@ export class SwitchPanel extends Component {
                 className={`rounded-top border border-bottom-0 pl-3 pr-3 py-2 ${
                   display_terminal ? "" : "shaded"
                 }`}
+                style={{ outline: "none" }}
                 onClick={this.displayEditor.bind(this)}
               >
                 Editor
