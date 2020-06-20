@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Interpreter, Verbosity } from "lambster";
+import { Interpreter, version } from "lambster";
 import { Writable } from "stream";
 
 function Log(props) {
   return (
     <div className="col-xs-12 col-sm-12 overflow-auto p-0 test">
-      <pre className="text-monospace p-0 m-0">{props.text}</pre>
+      <pre className="p-0 m-0" style={{ fontSize: "12.8px" }}>
+        {props.text}
+      </pre>
     </div>
   );
 }
@@ -36,6 +38,9 @@ export class Terminal extends Component {
     this.inputfield = document.getElementById("terminal-input");
     this.outputfield = document.getElementById("terminal-output");
     this.scrollbox = document.getElementById("terminal-container");
+
+    this.write("lambster: A lambda calculus interpreter");
+    this.write(`version ${version} -- type 'help' for more information`);
   }
 
   componentDidUpdate(prev_props) {
@@ -124,12 +129,21 @@ export class Terminal extends Component {
             <Log key={idx} text={text} />
           ))}
         </div>
-        <span>{this.props.prompt}</span>
+        <span
+          style={{
+            fontFamily:
+              'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
+          }}
+        >
+          {this.props.prompt}
+        </span>
         <input
           className="border-0"
           style={{
             width: "93%",
             outline: "none",
+            fontFamily:
+              'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
           }}
           id="terminal-input"
           autoFocus

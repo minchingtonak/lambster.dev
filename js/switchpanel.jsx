@@ -19,7 +19,10 @@ function RadioButton(props) {
   return (
     <div className="btn-group btn-group-toggle">
       {props.buttons.map((info, idx) => (
-        <label key={idx} className={`btn btn-light border ${props.active === idx ? "active" : ""}`}>
+        <label
+          key={idx}
+          className={`btn border ${props.active === idx ? "btn-success" : "btn-light"}`}
+        >
           <input type="radio" name={props.name} id={info.text} onClick={info.onClick} />
           {info.text}
         </label>
