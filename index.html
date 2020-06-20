@@ -24,8 +24,6 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
-    <!-- <link rel="stylesheet" href="node_modules/xterm/css/xterm.css" />
-    <script src="node_modules/xterm/lib/xterm.js"></script> -->
     <title>Lambster</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
@@ -42,6 +40,7 @@
         white-space: -pre-wrap;
         white-space: -o-pre-wrap;
         word-wrap: break-word;
+        padding: 15px;
       }
 
       .shaded {
@@ -50,34 +49,47 @@
     </style>
   </head>
   <body>
-    <div class="d-flex justify-content-center align-items-start h-100 w-100">
+    <div id="content" class="d-flex justify-content-center align-items-start">
       <div class="container p-3 mt-5">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 title">
-            <h1 class="mb-0">Lambster</h1>
+        <div class="row px-3">
+          <div class="d-flex justify-content-center p-0 col-1 order-lg-first order-md-first order-last">
+            <span style="font-size: 4em; font-weight: bold;">λ</span>
+            <!-- <img src="https://media.gettyimages.com/photos/cheese-chunk-isolated-on-white-background-picture-id859268416?s=612x612"> -->
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-3 subtitle">
+          <div class="col-9 mb-3 mr-0 pl-lg-0 order-lg-last order-md-last order-first">
+            <h1 class="mb-0">Lambster</h1>
             <h4>A lambda calculus interpreter</h4>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 test">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div id="panel"></div>
             <script type="text/javascript" src="/static/js/bundle.js"></script>
           </div>
-          <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 bg-light test">
-            <p>What is lambda calculus?</p>
-            <p>
-              The lambda calculus was invented by
-              <a href="https://en.wikipedia.org/wiki/Alonzo_Church"
-                >Alonzo Church</a
-              >
-              as a means of expressing arbitrary computation. It is equivalent
-              in computational power to a Turing machine. It is widely known as
-            </p>
-          </div> -->
         </div>
       </div>
     </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="d-flex justify-content-center align-items-middle col-12">
+            <span>Made with &#128153; by <a href="https://alecminch.dev">Alec Minchington</a></span>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="d-flex px-0 justify-content-md-end justify-content-sm-center justify-content-center align-items-middle col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          >
+            <span>Powered by <a href="https://github.com/minchingtonak/lambster">lambster</a></span>
+            <span class="d-md-block d-none px-2">&bull;</span>
+          </div>
+          <div
+            class="d-flex px-0 pb-3 justify-content-md-start justify-content-sm-center justify-content-center align-items-middle col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          >
+            <span class="p-0 m-0">See the website source <a href="">here</a></span>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
