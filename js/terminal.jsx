@@ -18,7 +18,8 @@ export class Terminal extends Component {
     this.state = {
       history: [],
       logs: [],
-      cur_history: -1,
+      histpos: -1,
+      prevhistpos: -1,
       scrollpos: 0,
       clicktime: -1,
     };
@@ -48,6 +49,13 @@ export class Terminal extends Component {
       this.interpreter.setOptions({ verbosity: this.props.verbosity });
     if (this.props.rename_free_vars !== prev_props.rename_free_vars)
       this.interpreter.setOptions({ rename_free_vars: this.props.rename_free_vars });
+
+    if (this.state.histpos !== -1) {
+      this.inputfield.value = this.state.history[this.state.histpos];
+      setTimeout(_ => {
+        this.inputfield.selectionStart = this.inputfield.selectionEnd = this.inputfield.value.length;
+      }, 50);
+    } else this.inputfield.value = this.state.prevhistpos !== -1 ? "" : this.inputfield.value;
   }
 
   write(text) {
@@ -56,9 +64,9 @@ export class Terminal extends Component {
     }));
   }
 
-  addHistoryItem(cmd) {
+  addHistoryItem(item) {
     this.setState(prev => ({
-      history: [cmd, ...prev.history],
+      history: [item, ...prev.history],
     }));
   }
 
@@ -94,17 +102,17 @@ export class Terminal extends Component {
       this.write(`${this.props.prompt}${query}`);
       this.interpreter.interpret(query);
     } else if (e.key === "ArrowUp") {
-      // this.setState((prev) => ({
-      //   cur_history:
-      //     prev.cur_history === prev.history.length - 1
-      //       ? prev.cur_history
-      //       : prev.cur_history + 1,
-      // }));
+      this.setState(prev => ({
+        histpos: prev.histpos === prev.history.length - 1 ? prev.histpos : prev.histpos + 1,
+        prevhistpos: prev.histpos,
+      }));
     } else if (e.key === "ArrowDown") {
-      // this.setState((prev) => ({
-      //   cur_history:
-      //     prev.cur_history === -1 ? prev.cur_history : prev.cur_history - 1,
-      // }));
+      this.setState(prev => ({
+        histpos: prev.histpos === -1 ? prev.histpos : prev.histpos - 1,
+        prevhistpos: prev.histpos,
+      }));
+    } else if (e.key !== "Shift" && e.key !== "Control" && e.key !== "Alt" && e.key !== "OS") {
+      this.setState(prev => ({ histpos: -1, prevhistpos: -1 }));
     }
   }
 
