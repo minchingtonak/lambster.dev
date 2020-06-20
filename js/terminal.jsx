@@ -62,6 +62,9 @@ export class Terminal extends Component {
     this.setState(prev => ({
       logs: [...prev.logs, text],
     }));
+    setTimeout(_ => {
+      this.scrollbox.scrollTop = this.scrollbox.scrollHeight - this.scrollbox.clientHeight;
+    }, 0);
   }
 
   addHistoryItem(item) {
@@ -127,7 +130,7 @@ export class Terminal extends Component {
         onMouseUp={this.handleMouseUp.bind(this)}
         onScroll={this.handleScroll.bind(this)}
         style={{
-          height: "400px",
+          height: "414px",
           fontSize: "0.8em",
           display: hidden ? "none" : "inherit",
         }}

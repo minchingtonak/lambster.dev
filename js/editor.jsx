@@ -48,7 +48,7 @@ export class Editor extends Component {
               defaultValue={this.state.text}
               className="border rounded-bottom w-100 h-100 text-monospace font-weight-bold p-2"
               spellCheck={false}
-              rows={10}
+              rows={20}
               name="editor"
               onInput={e => {
                 this.state.text = e.target.value;
