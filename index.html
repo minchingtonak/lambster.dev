@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170303704-1"></script>
@@ -14,17 +14,12 @@
     </script>
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta content="utf-8" http-equiv="encoding" />
     <meta name="google" content="notranslate" />
     <meta http-equiv="Content-Language" content="en" />
-    <meta
-      name="description"
-      content="Lambster - an online lambda calculus interpreter"
-    />
-    <meta
-      name="keywords"
-      content="lambster, lambda, calculus, interpreter, evaluator"
-    />
+    <meta name="description" content="Lambster - an online lambda calculus interpreter" />
+    <meta name="keywords" content="lambster, lambda, calculus, interpreter, evaluator" />
     <meta name="author" content="Alec Minchington" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff" />
@@ -50,8 +45,10 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
+    <script src="https://kit.fontawesome.com/d3310f1cf4.js" crossorigin="anonymous"></script>
+
     <title>Lambster</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <style>
       html,
       body {
@@ -73,6 +70,15 @@
         background-color: rgb(218, 224, 229);
       }
     </style>
+
+    <script>
+      $(document).ready(function () {
+        $("body").tooltip({
+          selector: "[data-tooltip=tooltip]",
+          container: "body",
+        });
+      });
+    </script>
   </head>
   <body>
     <div id="content" class="d-flex justify-content-center align-items-start">
