@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
-set -Eeuxo pipefail
+set -Eeuo pipefail
 
 OUTPUT=minified
 
-npm run build
+rm -rf $OUTPUT
+
+# npm run build
 
 # Create dirs
 for dir in ./**/*/; do
@@ -11,9 +13,10 @@ for dir in ./**/*/; do
     mkdir -pv $OUTPUT/$dir
 done
 
-# js
-for file in static/js/*; do
+# static
+for file in static/*/*; do
     cp $file $OUTPUT/$file
+    echo "copy $file to $OUTPUT/$file"
 done
 
 # html
