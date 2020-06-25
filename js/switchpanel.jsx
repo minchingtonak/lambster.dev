@@ -7,7 +7,7 @@ function ToggleButton(props) {
   return (
     <button
       type="button"
-      className={`btn ${props.classes} ${props.toggledOn ? "btn-success" : "btn-light border"}`}
+      className={`btn ${props.classes} ${props.toggledOn ? "btn-primary" : "btn-light border"}`}
       onClick={props.onClick}
     >
       {props.text}
@@ -21,7 +21,7 @@ function RadioButton(props) {
       {props.buttons.map((info, idx) => (
         <label
           key={idx}
-          className={`btn border ${props.active === idx ? "btn-success" : "btn-light"}`}
+          className={`btn border ${props.active === idx ? "btn-primary" : "btn-light"}`}
         >
           <input type="radio" name={props.name} id={info.text} onClick={info.onClick} />
           {info.text}
@@ -68,7 +68,7 @@ export class SwitchPanel extends Component {
             <div className="col-7 col-md-4 col-lg-3 px-0">
               <button
                 className={`rounded-top border border-bottom-0 pl-3 pr-3 py-2 ${
-                  display_terminal ? "shaded" : ""
+                  display_terminal ? "selected" : ""
                 }`}
                 style={{ outline: "none" }}
                 onClick={this.displayTerminal.bind(this)}
@@ -77,7 +77,7 @@ export class SwitchPanel extends Component {
               </button>
               <button
                 className={`rounded-top border border-bottom-0 pl-3 pr-3 py-2 ${
-                  display_terminal ? "" : "shaded"
+                  display_terminal ? "" : "selected"
                 }`}
                 style={{ outline: "none" }}
                 onClick={this.displayEditor.bind(this)}
@@ -136,7 +136,7 @@ export class SwitchPanel extends Component {
               </button>
               <button
                 type="button"
-                className="rounded-top border border-bottom-0 pl-3 pr-3 py-2"
+                className="rounded-top border shaded border-bottom-0 pl-3 pr-3 py-2"
                 data-toggle="modal"
                 data-target="#settingsModal"
               >
@@ -301,7 +301,7 @@ export class SwitchPanel extends Component {
                 </div>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-success" data-dismiss="modal">
+                <button type="button" className="btn btn-primary" data-dismiss="modal">
                   Save Changes
                 </button>
               </div>

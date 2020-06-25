@@ -59,6 +59,11 @@
     <title>Lambster - Lambda calculus interpreter</title>
 
     <style>
+      :root {
+        --lambster-blue: #00a2e8;
+        --lambster-dark: #0097d8;
+      }
+
       html,
       body {
         height: 100%;
@@ -75,8 +80,60 @@
         padding: 15px;
       }
 
-      .shaded {
-        background-color: rgb(218, 224, 229);
+      .selected {
+        background-color: var(--lambster-blue);
+        color: white;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+
+      .selected:hover {
+        background-color: var(--lambster-dark);
+      }
+
+      .shaded:focus {
+        background-color: #f3f3f3;
+      }
+
+      .btn-primary {
+        background-color: var(--lambster-blue);
+        border-color: var(--lambster-blue);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--lambster-dark);
+        border-color: var(--lambster-dark);
+      }
+
+      .btn-primary:active {
+        background-color: var(--lambster-blue);
+      }
+
+      .btn-primary:focus {
+        box-shadow: 0 0 0;
+        border-color: var(--lambster-blue);
+        background-color: var(--lambster-blue);
+      }
+
+      .btn-light:focus {
+        box-shadow: 0 0 0;
+        background-color: var(--light);
+      }
+
+      .btn-light:focus:hover {
+        background-color: #e4e4e4;
+      }
+
+      #logo {
+        width: 75px;
+        height: 75px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        #logo {
+          width: 90px;
+          height: 90px;
+        }
       }
     </style>
 
@@ -91,12 +148,17 @@
   </head>
   <body>
     <div id="content" class="d-flex justify-content-center align-items-start">
-      <div class="container p-3 mt-5">
+      <div class="container p-3 mt-2 mt-md-5">
         <div class="row px-3">
           <div
-            class="d-flex justify-content-center align-items-center mb-3 p-0 col-1 order-lg-first order-md-first order-last"
+            class="d-flex justify-content-center align-items-center col-1 order-lg-first order-md-first order-last"
           >
-            <img style="width: 75px; height: 75px;" src="/static/img/logo.png" alt="Lambster logo" />
+            <img
+              id="logo"
+              class="mb-3 ml-3 ml-md-0"
+              src="/static/img/logo.png"
+              alt="Lambster logo"
+            />
           </div>
           <div class="col-9 mb-3 mr-0 pl-lg-0 order-lg-last order-md-last order-first">
             <h1 class="mb-0">Lambster</h1>

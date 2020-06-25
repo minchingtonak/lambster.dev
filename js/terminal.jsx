@@ -151,7 +151,7 @@ export class Terminal extends Component {
         <input
           className="border-0"
           style={{
-            width: "93%",
+            width: "90%",
             outline: "none",
             fontFamily:
               'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
