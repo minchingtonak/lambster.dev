@@ -5,7 +5,7 @@ OUTPUT=minified
 
 rm -rf $OUTPUT
 
-# npm run build
+npm run build
 
 # Create dirs
 for dir in ./**/*/; do
