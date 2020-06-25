@@ -7,7 +7,7 @@ function ToggleButton(props) {
   return (
     <button
       type="button"
-      className={`btn ${props.classes} ${props.toggledOn ? "btn-primary" : "btn-light border"}`}
+      className={`btn ${props.classes} ${props.toggledOn ? "btn-success" : "btn-light border"}`}
       onClick={props.onClick}
     >
       {props.text}
@@ -21,7 +21,7 @@ function RadioButton(props) {
       {props.buttons.map((info, idx) => (
         <label
           key={idx}
-          className={`btn border ${props.active === idx ? "btn-primary" : "btn-light"}`}
+          className={`btn border ${props.active === idx ? "btn-success" : "btn-light"}`}
         >
           <input type="radio" name={props.name} id={info.text} onClick={info.onClick} />
           {info.text}

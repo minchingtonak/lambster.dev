@@ -55,7 +55,7 @@ export class Editor extends Component {
                 e.preventDefault();
               }}
             ></textarea>
-            <button className="btn btn-success mt-2" type="submit">
+            <button className="btn btn-primary mt-2" style={{}} type="submit">
               Run
             </button>
           </form>
