@@ -115,6 +115,15 @@
         background-color: var(--lambster-blue);
       }
 
+      .btn-success:not(:disabled):not(.disabled):active {
+        box-shadow: 0 0 0;
+        border-color: var(--lambster-blue);
+      }
+
+      .btn-success:not(:disabled):not(.disabled):active:focus {
+        box-shadow: 0 0 0 .2rem #00a2e849;
+      }
+
       .btn-light:focus {
         box-shadow: 0 0 0;
         background-color: var(--light);
@@ -190,7 +199,7 @@
           <div
             class="d-flex px-0 pb-3 justify-content-md-start justify-content-sm-center justify-content-center align-items-middle col-lg-6 col-md-6 col-sm-12 col-xs-12"
           >
-            <span class="p-0 m-0">See the website source <a href="">here</a></span>
+            <span class="p-0 m-0">See the website source <a href="https://github.com/minchingtonak/lambster.dev">here</a></span>
           </div>
         </div>
       </div>
