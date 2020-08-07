@@ -1,65 +1,78 @@
 {
-    "name": "lambster.dev",
-    "version": "1.0.0",
-    "description": "Lambda calculus interpreter web interface",
-    "main": "webpack.config.js",
-    "scripts": {
-        "deploy": "./bin/minify",
-        "build": "npx webpack --config webpack.config.js",
-        "watch": "npx webpack --mode=development --watch --config webpack.config.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com/minchingtonak/lambster.dev.git"
-    },
-    "author": "Alec Minchington",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/minchingtonak/lambster.dev/issues"
-    },
-    "homepage": "https://github.com/minchingtonak/lambster.dev#readme",
-    "devDependencies": {
-        "@babel/core": "^7.9.6",
-        "@babel/preset-env": "^7.8.7",
-        "@babel/preset-react": "^7.9.4",
-        "babel-eslint": "^10.1.0",
-        "babel-loader": "^8.1.0",
-        "eslint": "^6.8.0",
-        "eslint-config-airbnb": "^18.1.0",
-        "eslint-plugin-import": "^2.20.2",
-        "eslint-plugin-jsx-a11y": "^6.2.3",
-        "eslint-plugin-react": "^7.20.0",
-        "eslint-plugin-react-hooks": "^2.5.1",
-        "@types/node": "^14.0.6",
-        "@types/react-dom": "^16.9.8"
-    },
-    "dependencies": {
-        "@babel/plugin-proposal-class-properties": "^7.8.3",
-        "@types/react": "^16.9.35",
-        "lambster": "^1.0.4",
-        "npm-force-resolutions": "0.0.3",
-        "prop-types": "^15.7.2",
-        "react": "^15.1.1",
-        "react-dom": "^15.1.1",
-        "webpack": "^4.43.0",
-        "webpack-cli": "^3.3.11"
-    },
-    "babel": {
-        "presets": [
-            "@babel/preset-env",
-            "@babel/preset-react"
-        ],
-        "plugins": [
-            "@babel/plugin-proposal-class-properties"
-        ]
-    },
-    "prettier": {
-        "printWidth": 100,
-        "tabWidth": 2,
-        "semi": true,
-        "singleQuote": false,
-        "trailingComma": "es5",
-        "bracketSpacing": true,
-        "arrowParens": "avoid"
-    }
+  "name": "lambster.dev",
+  "version": "1.0.0",
+  "description": "Lambda calculus interpreter web interface",
+  "main": "./js/index.tsx",
+  "scripts": {
+    "deploy": "npm run build && ./bin/minify",
+    "test": "npm run deploy && cd minified && python3 -m http.server 8000",
+    "build": "npx webpack --config webpack.config.js",
+    "watch": "npx webpack --mode=development --watch --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/minchingtonak/lambster.dev.git"
+  },
+  "author": "Alec Minchington",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minchingtonak/lambster.dev/issues"
+  },
+  "homepage": "https://github.com/minchingtonak/lambster.dev#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@types/node": "^14.0.27",
+    "@types/react-dom": "^16.9.8",
+    "autoprefixer": "^9.8.6",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.2.1",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "postcss-loader": "^3.0.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^8.0.2",
+    "webpack": "^4.44.1"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@types/jquery": "^3.5.1",
+    "@types/react": "^16.9.44",
+    "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1",
+    "lambster": "^1.0.4",
+    "npm-force-resolutions": "0.0.3",
+    "popper.js": "^1.16.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "typescript": "^3.9.7",
+    "webpack-cli": "^3.3.12"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "arrowParens": "always"
+  }
 }

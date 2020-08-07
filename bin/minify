@@ -5,8 +5,6 @@ OUTPUT=minified
 
 rm -rf $OUTPUT
 
-npm run build
-
 # Create dirs
 for dir in ./**/*/; do
     [[ "$dir" =~ .*"node_modules"|"env".* ]] && continue
