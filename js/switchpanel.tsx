@@ -154,6 +154,7 @@ export function SwitchPanel() {
               prompt="λ> "
               verbosity={verbosity}
               renameFreeVars={renameFreeVars}
+              rows={20}
               hidden={!displayTerminal}
             />
           </div>
@@ -161,6 +162,7 @@ export function SwitchPanel() {
             <Editor
               verbosity={verbosity}
               renameFreeVars={renameFreeVars}
+              rows={20}
               hidden={displayTerminal}
             />
           </div>

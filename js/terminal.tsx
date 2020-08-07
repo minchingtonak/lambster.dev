@@ -16,6 +16,7 @@ export function Terminal(props: {
   prompt: string;
   verbosity: Verbosity;
   renameFreeVars: boolean;
+  rows: number;
   hidden: boolean;
 }) {
   const [logs, setLogs] = useState<string[]>([]),
@@ -97,7 +98,7 @@ export function Terminal(props: {
   return (
     <div
       ref={scrollBox}
-      className="border rounded-bottom overflow-auto p-2"
+      className="panel-font-size border rounded-bottom overflow-auto p-2"
       onMouseDown={() => {
         setClickTime(new Date().getTime());
       }}
@@ -118,8 +119,7 @@ export function Terminal(props: {
           );
       }}
       style={{
-        height: "414px",
-        fontSize: "0.8em",
+        height: `${props.rows * 19 + 34}px`, // Formula for pixel height of editor component
         display: props.hidden ? "none" : "inherit",
       }}
     >
@@ -128,22 +128,13 @@ export function Terminal(props: {
           <Log key={idx} text={text} />
         ))}
       </div>
-      <span
-        style={{
-          fontFamily:
-            'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
-        }}
-      >
-        {props.prompt}
-      </span>
+      <span className="text-monospace">{props.prompt}</span>
       <input
         ref={inputField}
-        className="border-0"
+        className="border-0 text-monospace"
         style={{
           width: "90%",
           outline: "none",
-          fontFamily:
-            'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
         }}
         autoFocus
         onKeyDown={handleKeyPress}
