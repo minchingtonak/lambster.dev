@@ -30,7 +30,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
-          disable_nojekyll: false
+          disable_nojekyll: true
 
       - run: pwd
       - run: ls -Al
