@@ -1,7 +1,6 @@
 env/
 .vscode/
 static/js/
-minified/
 
 # Logs
 logs
