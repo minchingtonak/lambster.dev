@@ -48,7 +48,7 @@
     "@types/react": "^16.9.44",
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1",
-    "lambster": "^1.0.4",
+    "lambster": "^1.0.6",
     "npm-force-resolutions": "0.0.3",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",

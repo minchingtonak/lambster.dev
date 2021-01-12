@@ -54,7 +54,7 @@ export function Terminal(props: {
       const query = inputField.current.value;
       inputField.current.value = "";
       write(`${props.prompt}${query}`);
-      interpreter.current.interpret(query);
+      interpreter.current.evaluate(query);
     }
   }
 

@@ -29,7 +29,7 @@ export function Editor(props: {
                 },
               }),
               rename_free_vars: props.renameFreeVars,
-            }).interpret(text);
+            }).evaluate(text);
           }}
         >
           <textarea

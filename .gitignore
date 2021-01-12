@@ -1,6 +1,7 @@
 env/
 .vscode/
 static/js/
+build/
 
 # Logs
 logs
