@@ -31,6 +31,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           disable_nojekyll: false
+
+      - run: pwd
+      - run: ls -Al
+      - run: git status
 #       - name: Deploy 🚀
 #         uses: JamesIves/github-pages-deploy-action@3.7.1
 #         with:
