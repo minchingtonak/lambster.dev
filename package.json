@@ -5,7 +5,7 @@
   "main": "./js/index.tsx",
   "scripts": {
     "deploy": "npm run build && ./bin/minify",
-    "test": "npm run deploy && cd minified && python3 -m http.server 8000",
+    "test": "npm run deploy && cd build && python3 -m http.server 8000",
     "build": "npx webpack --config webpack.config.js",
     "watch": "npx webpack --mode=development --watch --config webpack.config.js"
   },

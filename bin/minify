@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-OUTPUT=minified
+OUTPUT=build
 
 rm -rf $OUTPUT
 
@@ -13,11 +13,11 @@ done
 
 # static
 for file in static/*/*; do
-    cp $file $OUTPUT/$file
+    cp "$file" "$OUTPUT/$file"
     echo "copy $file to $OUTPUT/$file"
 done
 
 # html
 for file in ./*.html; do
-    npx html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true $file > $OUTPUT/$file
+    npx html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true "$file" > "$OUTPUT/$file"
 done

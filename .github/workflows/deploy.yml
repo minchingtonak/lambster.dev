@@ -23,13 +23,13 @@ jobs:
 
       - run: pwd
       - run: ls -Al
-      - run: ls -Al ./minified
+      - run: ls -Al ./build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./minified
+          publish_dir: ./build
           disable_nojekyll: false
 #       - name: Deploy 🚀
 #         uses: JamesIves/github-pages-deploy-action@3.7.1
