@@ -20,9 +20,6 @@ export function Terminal(props: {
   hidden: boolean;
 }) {
   const [logs, setLogs] = useState<string[]>([]),
-    // [history, setHistory] = useState<string[]>([]),
-    // [histPos, setHistPos] = useState(-1),
-    // [prevHistPos, setPrevHistPos] = useState(-1),
     [scrollPos, setScrollPos] = useState(0),
     [clickTime, setClickTime] = useState(-1);
 
@@ -56,20 +53,9 @@ export function Terminal(props: {
       if (!inputField.current) return;
       const query = inputField.current.value;
       inputField.current.value = "";
-      // setHistory((prev) => [...prev, query]);
       write(`${props.prompt}${query}`);
       interpreter.current.interpret(query);
     }
-    // } else if (e.key === "ArrowUp") {
-    //   setPrevHistPos(histPos);
-    //   setHistPos((prev) => (prev === history.length - 1 ? prev : prev + 1));
-    // } else if (e.key === "ArrowDown") {
-    //   setPrevHistPos(histPos);
-    //   setHistPos((prev) => (prev === -1 ? prev : prev - 1));
-    // } else if (!(e.key in ["Shift", "Control", "Alt", "OS"])) {
-    //   setHistPos(-1);
-    //   setPrevHistPos(-1);
-    // }
   }
 
   useEffect(() => {
@@ -82,19 +68,6 @@ export function Terminal(props: {
       verbosity: props.verbosity,
       rename_free_vars: props.renameFreeVars,
     });
-    // if (inputField.current) {
-    //   if (histPos !== -1) {
-    //     inputField.current.value = history[histPos];
-    //     setTimeout(() => {
-    //       if (inputField.current)
-    //         inputField.current.selectionStart = inputField.current.selectionEnd =
-    //           inputField.current.value.length;
-    //     }, 50);
-    //   } 
-    // else {
-    //   inputField.current.value = prevHistPos !== -1 ? "" : inputField.current.value;
-    // }
-    // }
   }, [props.verbosity, props.renameFreeVars]);
 
   return (

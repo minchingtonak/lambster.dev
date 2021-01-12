@@ -2,7 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { Interpreter, Verbosity } from "lambster";
 import { Writable } from "stream";
 
-export function Editor(props: { hidden: boolean; verbosity: Verbosity; renameFreeVars: boolean; rows: number }) {
+export function Editor(props: {
+  hidden: boolean;
+  verbosity: Verbosity;
+  renameFreeVars: boolean;
+  rows: number;
+}) {
   const [text, setText] = useState(
     "# Enter lambda calculus terms or bindings and lambster will execute them line by line\n# This example demos some of the builtin bindings (you can see all bindings with the 'env' command)\n(Lx y. x y)(Lw. (Lx.x w) a w) b\nsum = plus two three\nincr sum\n\n# Here's how the list [1, 2, 3] could be represented in lambda calculus using the 'pair' term\nlist = pair one (pair two (pair three nil))\nplus (first list) (first (second list))"
   );
