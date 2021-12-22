@@ -1,0 +1,3 @@
+recompile bootstrap with changed sass vars instead of manually overriding styles
+use toggle switch for rename free vars
+implement simple history feature in terminal
