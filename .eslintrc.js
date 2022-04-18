@@ -50,6 +50,7 @@ exports = module.exports = {
 		'unused-imports/no-unused-imports': 'error',
 		'@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '^_' }],
 		'react/jsx-uses-vars': 1, // eslint doesn't count JSX usage as import usage by default, this fixes that
+		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': [
 			'error',
 			{
