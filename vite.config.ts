@@ -5,6 +5,11 @@ import alias from '@rollup/plugin-alias';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	resolve: {
+		alias: {
+			stream: 'stream-browserify',
+		},
+	},
 	plugins: [
 		preact(),
 		checker({
