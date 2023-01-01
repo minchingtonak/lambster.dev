@@ -27,7 +27,7 @@
     "@types/react-dom": "^16.9.8",
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.3.0",
     "css-loader": "^4.2.1",
     "eslint": "^7.6.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -35,12 +35,12 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
-    "postcss-loader": "^3.0.0",
+    "postcss-loader": "^7.0.2",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",
     "style-loader": "^1.2.1",
-    "ts-loader": "^8.0.2",
-    "webpack": "^4.44.1"
+    "ts-loader": "^8.4.0",
+    "webpack": "^5.75.0"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.10.4",
@@ -55,7 +55,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "typescript": "^3.9.7",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^5.0.1"
   },
   "babel": {
     "presets": [
