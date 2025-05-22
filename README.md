@@ -1,12 +1,21 @@
-## Quick Setup
+# bun-react-tailwind-shadcn-template
 
-First clone this repo and `cd` into the directory. Then:
+To install dependencies:
 
-1. `virtualenv --python=python3 env`
-2. `./env/bin/activate`
-3. `pip install nodeenv`
-4. `nodeenv --python-virtualenv env`
-5. `deactivate`
-6. `./env/bin/activate`
-7. `npm i .`
-8. `npm run watch`
+```bash
+bun install
+```
+
+To start a development server:
+
+```bash
+bun dev
+```
+
+To run for production:
+
+```bash
+bun start
+```
+
+This project was created using `bun init` in bun v1.2.13. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
