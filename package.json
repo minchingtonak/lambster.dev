@@ -8,7 +8,13 @@
   "scripts": {
     "dev": "bun --hot src/index.tsx",
     "start": "NODE_ENV=production bun src/index.tsx",
-    "build": "bun run build.ts"
+    "build": "bun run build.ts",
+    "check": "bunx prettier --check .",
+    "format": "bunx prettier --write .",
+    "lint": "bunx eslint .",
+    "lint-fix": "bunx eslint --fix .",
+    "prepare": "husky",
+    "commitlint": "commitlint --config commitlint.config.js --edit"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.0",
@@ -29,8 +35,32 @@
     "zustand": "^5.0.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/js": "^9.27.0",
+    "@types/bun": "latest",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/bun": "latest"
-  }
+    "eslint": "^9.27.0",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.1.0",
+    "husky": "^9.1.7",
+    "typescript-eslint": "^8.32.1"
+  },
+  "prettier": {
+    "experimentalTernaries": true,
+    "printWidth": 80,
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": false,
+    "quoteProps": "consistent",
+    "jsxSingleQuote": false,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "objectWrap": "collapse",
+    "bracketSameLine": false,
+    "arrowParens": "always",
+    "endOfLine": "lf"
+  },
+  "commitlint": {}
 }

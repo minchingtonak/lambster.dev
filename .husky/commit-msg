@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -Eeuo pipefail
+
+set -x
+# create list of only files with staged changes
+FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
+
+# prettify all selected files
+echo "$FILES" | xargs bunx prettier --write --ignore-unknown
+
+# lint all selected files
+echo "$FILES" | xargs bunx eslint --fix --no-warn-ignored
+
+# Add back the modified/prettified files to staging
+echo "$FILES" | xargs git add
+{ set +x; } 2>/dev/null
+
+bun run commitlint "$1"
