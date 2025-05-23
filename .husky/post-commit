@@ -1,3 +1,4 @@
 #!/bin/bash
 
+# https://prettier.io/docs/precommit#option-5-shell-script
 git update-index --again

@@ -1,8 +1,7 @@
 #!/bin/bash
 
-set -Eeuo pipefail
+set -Eeuxo pipefail
 
-set -x
 # create list of only files with staged changes
 FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
 
