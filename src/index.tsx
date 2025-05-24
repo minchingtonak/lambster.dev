@@ -7,25 +7,17 @@ const server = serve({
     "/*": index,
 
     "/api/hello": {
-      async GET(req) {
-        return Response.json({
-          message: "Hello, world!",
-          method: "GET",
-        });
+      async GET(_req) {
+        return Response.json({ message: "Hello, world!", method: "GET" });
       },
-      async PUT(req) {
-        return Response.json({
-          message: "Hello, world!",
-          method: "PUT",
-        });
+      async PUT(_req) {
+        return Response.json({ message: "Hello, world!", method: "PUT" });
       },
     },
 
-    "/api/hello/:name": async req => {
+    "/api/hello/:name": async (req) => {
       const name = req.params.name;
-      return Response.json({
-        message: `Hello, ${name}!`,
-      });
+      return Response.json({ message: `Hello, ${name}!` });
     },
   },
 
