@@ -12,9 +12,9 @@
     "check": "bunx prettier --check .",
     "format": "bunx prettier --write .",
     "lint": "bunx eslint .",
-    "lint-fix": "bunx eslint --fix .",
+    "lint:fix": "bunx eslint --fix .",
     "prepare": "husky",
-    "commitlint": "commitlint --config commitlint.config.js --edit"
+    "commitlint": "commitlint --edit"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.0",
@@ -63,5 +63,9 @@
     "arrowParens": "always",
     "endOfLine": "lf"
   },
-  "commitlint": {}
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
 }
