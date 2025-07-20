@@ -1,51 +1,89 @@
-@import "../styles/globals.css";
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
-@layer base {
-  :root {
-    @apply font-sans;
-  }
-
-  body {
-    @apply grid place-items-center min-w-[320px] min-h-screen relative m-0 bg-background text-foreground;
-  }
+:root {
+  --console-width: 90vw;
+  --rounded-border-value: 30px;
+  --logo-height: 10vh;
 }
 
-/* cool Bun background animation 😎 */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.05;
-  background: url("./logo.svg");
-  background-size: 256px;
-  transform: rotate(-12deg) scale(1.35);
-  animation: slide 30s linear infinite;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
 
-@keyframes slide {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 256px 224px;
-  }
+/* Element and high-level style */
+
+body {
+  margin: 0;
+  background-color: #1f1f1f;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header {
+  display: flex;
 }
 
-@media (prefers-reduced-motion) {
-  *,
-  ::before,
-  ::after {
-    animation: none !important;
-  }
+#root {
+  height: 100%;
+}
+
+/* Header/Header Text style */
+
+#text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#lambster-text {
+  text-align: center;
+  font-family: "Jetbrains Mono", monospace;
+  color: #ffffff;
+  font-size: calc(var(--logo-height) / 4);
+}
+
+#subheader {
+  text-align: center;
+  color: white;
+  font-family: sans-serif, arial;
+  font-size: calc(var(--logo-height) / 10);
+}
+
+.logo-sizing {
+  aspect-ratio: 1/1;
+  height: var(--logo-height);
+}
+
+/* Console style */
+
+#console-screen {
+  width: var(--console-width);
+  aspect-ratio: 2.37/1;
+  background-color: #050505;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  margin-top: 5vh;
+}
+
+#console-text {
+}
+
+hr {
+  height: 5px;
+  width: calc(var(--console-width) * 0.85);
+  background-color: #aaaaaa;
+  border-radius: var(--rounded-border-value);
+}
+
+#user-input-bar {
+  width: var(--console-width);
+  border-radius: var(--rounded-border-value);
+  border-color: #505050;
+  background-color: #050505;
+  color: white;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }

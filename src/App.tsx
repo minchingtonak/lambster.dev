@@ -1,40 +1,53 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { APITester } from "./APITester";
+import { useEffect } from "react";
 import "./index.css";
+import lammy from "./img/Lammy.png";
 
-import logo from "./logo.svg";
-import reactLogo from "./react.svg";
+function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+  // Ensure first two characters are "> "
+  if (e.currentTarget.value.substring(0, 2) != "> ") {
+    if (e.currentTarget.value[0] != ">") {
+      e.currentTarget.value = ">" + e.currentTarget.value;
+    }
+    if (e.currentTarget.value[1] != " ")
+      e.currentTarget.value =
+        e.currentTarget.value[0] + " " + e.currentTarget.value.substring(2);
+  }
+}
 
 export function App() {
+  useEffect(() => {
+    const user_input: HTMLInputElement =
+      document.querySelector("#user-input-bar");
+    user_input.value = "> ";
+
+    return;
+  }, []);
+
   return (
-    <div className="container mx-auto p-8 text-center relative z-10">
-      <div className="flex justify-center items-center gap-8 mb-8">
+    <>
+      <header>
         <img
-          src={logo}
-          alt="Bun Logo"
-          className="h-36 p-6 transition-all duration-300 hover:drop-shadow-[0_0_2em_#646cffaa] scale-120"
+          className="logo-sizing"
+          src={lammy}
+          alt="Picture of Lammy mascot"
         />
-        <img
-          src={reactLogo}
-          alt="React Logo"
-          className="h-36 p-6 transition-all duration-300 hover:drop-shadow-[0_0_2em_#61dafbaa] [animation:spin_20s_linear_infinite]"
-        />
+
+        <div className="logo-sizing" id="text-container">
+          <h1 id="lambster-text">Lambster</h1>
+          <h2 id="subheader">A lambda calculus interpreter</h2>
+        </div>
+      </header>
+
+      <div id="console-screen">
+        <p id="console-text"></p>
       </div>
 
-      <Card className="bg-card/50 backdrop-blur-sm border-muted">
-        <CardContent className="pt-6">
-          <h1 className="text-5xl font-bold my-4 leading-tight">Bun + React</h1>
-          <p>
-            Edit{" "}
-            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
-              src/App.tsx
-            </code>{" "}
-            and save to test HMR
-          </p>
-          <APITester />
-        </CardContent>
-      </Card>
-    </div>
+      <hr />
+
+      <div>
+        <input id="user-input-bar" onChange={handleInputChange}></input>
+      </div>
+    </>
   );
 }
 
